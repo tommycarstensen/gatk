@@ -2,7 +2,7 @@ package org.broadinstitute.hellbender.cmdline.argumentcollections;
 
 import org.broadinstitute.barclay.argparser.Argument;
 import org.broadinstitute.hellbender.cmdline.StandardArgumentDefinitions;
-import org.broadinstitute.hellbender.engine.GATKInputPath;
+import org.broadinstitute.hellbender.engine.GATKPathSpecifier;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -20,12 +20,12 @@ public final class OptionalReadInputArgumentCollection extends ReadInputArgument
             doc = "BAM/SAM/CRAM file containing reads",
             optional = true,
             common = true)
-    private List<GATKInputPath> readInputNames = new ArrayList<>();
+    private List<GATKPathSpecifier> readInputNames = new ArrayList<>();
 
     @Override
     public List<Path> getReadPaths() {
         ArrayList<Path> ret = new ArrayList<>();
-        for (GATKInputPath fn : readInputNames) {
+        for (GATKPathSpecifier fn : readInputNames) {
             ret.add(fn.toPath());
         }
         return ret;
@@ -39,7 +39,7 @@ public final class OptionalReadInputArgumentCollection extends ReadInputArgument
     @Override
     public List<String> getRawInputStrings() {
         ArrayList<String> ret = new ArrayList<>();
-        for (GATKInputPath fn : readInputNames) {
+        for (GATKPathSpecifier fn : readInputNames) {
             ret.add(fn.getRawInputString());
         }
         return ret;

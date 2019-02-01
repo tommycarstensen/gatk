@@ -549,7 +549,8 @@ public abstract class GATKSparkTool extends SparkCommandLineProgram {
 
         if ( readArguments.getReadPaths().size() != 1 ) {
             throw new UserException("Sorry, we only support a single reads input for spark tools for now.");
-        if (getReadInputMergingPolicy() == ReadInputMergingPolicy.doNotMerge && readArguments.getReadFilesNames().size() != 1 ) {
+        }
+        if (getReadInputMergingPolicy() == ReadInputMergingPolicy.doNotMerge && readArguments.getReadPaths().size() != 1 ) {
             throw new UserException("Sorry, we only support a single reads input for for this spark tool.");
         }
 

@@ -2,7 +2,7 @@ package org.broadinstitute.hellbender.cmdline.argumentcollections;
 
 import org.broadinstitute.barclay.argparser.Argument;
 import org.broadinstitute.hellbender.cmdline.StandardArgumentDefinitions;
-import org.broadinstitute.hellbender.engine.GATKInputPath;
+import org.broadinstitute.hellbender.engine.GATKPathSpecifier;
 
 import java.io.File;
 import java.nio.file.Path;
@@ -15,7 +15,7 @@ public final class OptionalReferenceInputArgumentCollection extends ReferenceInp
     private static final long serialVersionUID = 1L;
 
     @Argument(fullName = StandardArgumentDefinitions.REFERENCE_LONG_NAME, shortName = StandardArgumentDefinitions.REFERENCE_SHORT_NAME, doc = "Reference sequence", optional = true)
-    private GATKInputPath referenceInput;
+    private GATKPathSpecifier referenceInput;
 
     @Override
     public String getReferenceFileName() {

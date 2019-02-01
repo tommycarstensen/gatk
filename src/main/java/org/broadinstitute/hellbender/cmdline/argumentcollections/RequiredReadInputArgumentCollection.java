@@ -2,7 +2,7 @@ package org.broadinstitute.hellbender.cmdline.argumentcollections;
 
 import org.broadinstitute.barclay.argparser.Argument;
 import org.broadinstitute.hellbender.cmdline.StandardArgumentDefinitions;
-import org.broadinstitute.hellbender.engine.GATKInputPath;
+import org.broadinstitute.hellbender.engine.GATKPathSpecifier;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import java.util.List;
 public final class RequiredReadInputArgumentCollection extends ReadInputArgumentCollection {
     private static final long serialVersionUID = 1L;
     @Argument(fullName = StandardArgumentDefinitions.INPUT_LONG_NAME, shortName = StandardArgumentDefinitions.INPUT_SHORT_NAME, doc = "BAM/SAM/CRAM file containing reads", optional = false, common = true)
-    public List<GATKInputPath> readFilesNames;
+    public List<GATKPathSpecifier> readFilesNames;
 
     /**
      * Temporary staging method for backward compatibility with all of the existing call sites that
@@ -25,7 +25,7 @@ public final class RequiredReadInputArgumentCollection extends ReadInputArgument
     @Override
     public List<String> getRawInputStrings() {
         ArrayList<String> ret = new ArrayList<>();
-        for (GATKInputPath fn : readFilesNames) {
+        for (GATKPathSpecifier fn : readFilesNames) {
             ret.add(fn.getRawInputString());
         }
         return ret;
@@ -34,7 +34,7 @@ public final class RequiredReadInputArgumentCollection extends ReadInputArgument
     @Override
     public List<Path> getReadPaths() {
         ArrayList<Path> ret = new ArrayList<>();
-        for (GATKInputPath fn : readFilesNames) {
+        for (GATKPathSpecifier fn : readFilesNames) {
             ret.add(fn.toPath());
         }
         return ret;

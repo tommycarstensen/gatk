@@ -85,7 +85,7 @@ public final class PrintReads extends ReadWalker {
     @Argument(fullName = StandardArgumentDefinitions.OUTPUT_LONG_NAME,
             shortName = StandardArgumentDefinitions.OUTPUT_SHORT_NAME,
             doc="Write output to this file")
-    public GATKOutputPath output;
+    public GATKPathSpecifier output;
     private SAMFileGATKReadWriter outputWriter;
 
     @Override
